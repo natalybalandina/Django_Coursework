@@ -64,10 +64,7 @@ venv\Scripts\activate  # Windows
 python manage.py migrate
 ``
 # Запуск сервера
+
 ```
 python manage.py runserver
 ```
-
-
-
-
