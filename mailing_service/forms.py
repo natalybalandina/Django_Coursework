@@ -1,7 +1,7 @@
 from django import forms
 from django.forms import ModelForm
 
-from mail_service.models import Mailing, MailingRecipient, Message
+from mailing_service.models import Mailing, MailingRecipient, Message
 
 
 class MessageForm(ModelForm):

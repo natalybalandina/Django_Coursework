@@ -22,7 +22,7 @@ urlpatterns = [
     path("register/", RegisterView.as_view(), name="register"),
     path("email-confirm/<str:token>/", email_verification, name="email-confirm"),
     path(
-        "email-confirmation/",
+        "email-confirm/",
         EmailConfirmationView.as_view(),
         name="email_confirmation",
     ),

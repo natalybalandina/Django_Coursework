@@ -1,7 +1,7 @@
 from django.urls import path
 
-from mail_service.apps import MailingServiceConfig
-from mail_service.views import (
+from mailing_service.apps import MailingServiceConfig
+from mailing_service.views import (
     HomeView,
     MailingCreateView,
     MailingDeleteView,

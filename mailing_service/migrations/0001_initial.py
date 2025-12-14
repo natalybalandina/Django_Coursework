@@ -98,7 +98,7 @@ class Migration(migrations.Migration):
                     "mailing",
                     models.ForeignKey(
                         on_delete=django.db.models.deletion.CASCADE,
-                        to="mail_service.mailing",
+                        to="mailing_service.mailing",
                         verbose_name="Рассылка",
                     ),
                 ),
@@ -149,7 +149,7 @@ class Migration(migrations.Migration):
             model_name="mailing",
             name="recipients",
             field=models.ManyToManyField(
-                to="mail_service.mailingrecipient", verbose_name="Получатели"
+                to="mailing_service.mailingrecipient", verbose_name="Получатели"
             ),
         ),
         migrations.CreateModel(
@@ -187,7 +187,7 @@ class Migration(migrations.Migration):
             name="message",
             field=models.ForeignKey(
                 on_delete=django.db.models.deletion.CASCADE,
-                to="mail_service.message",
+                to="mailing_service.message",
                 verbose_name="Сообщение",
             ),
         ),

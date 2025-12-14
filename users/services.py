@@ -18,7 +18,7 @@ def email_verification(request, token):
     user = get_object_or_404(CustomUser, token=token)
 
     if user.is_verified:
-        return redirect(reverse("mail_service:home"))  # Если уже подтвержден
+        return redirect(reverse("mailing_service:home"))  # Если уже подтвержден
 
     user.is_active = True
     user.is_verified = True  # Устанавливаем подтверждение email

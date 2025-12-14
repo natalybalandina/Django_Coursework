@@ -1,10 +1,10 @@
-{% extends 'mail_service/base.html' %}
+{% extends 'mailing_service/base.html' %}
 {% load static %}
 {% block content %}
 <h2 class="text-center mb-3 mt-3">Список получателей</h2>
 <div class="row">
     <div class="d-flex align-items-center">
-        <a href="{% url 'mail_service:mailing_recipient_create' %}" class="btn btn-primary mb-3 me-3">Добавить получателя</a>
+        <a href="{% url 'mailing_service:mailing_recipient_create' %}" class="btn btn-primary mb-3 me-3">Добавить получателя</a>
     </div>
 </div>
 
@@ -25,9 +25,9 @@
             <td>{{ recipient.email }}</td>
             <td>{{ recipient.comment|default:"-" }}</td>
             <td>
-                <a href="{% url 'mail_service:mailing_recipient_detail' recipient.id %}" class="btn btn-info btn-sm">Просмотр</a>
-                <a href="{% url 'mail_service:mailing_recipient_update' recipient.id %}" class="btn btn-warning btn-sm">Редактировать</a>
-                <a href="{% url 'mail_service:mailing_recipient_delete' recipient.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                <a href="{% url 'mailing_service:mailing_recipient_detail' recipient.id %}" class="btn btn-info btn-sm">Просмотр</a>
+                <a href="{% url 'mailing_service:mailing_recipient_update' recipient.id %}" class="btn btn-warning btn-sm">Редактировать</a>
+                <a href="{% url 'mailing_service:mailing_recipient_delete' recipient.id %}" class="btn btn-danger btn-sm">Удалить</a>
             </td>
         </tr>
         {% endfor %}

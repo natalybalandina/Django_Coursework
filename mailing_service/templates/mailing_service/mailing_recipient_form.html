@@ -1,4 +1,4 @@
-% extends 'mail_service/base.html' %}
+{% extends 'mailing_service/base.html' %}
 {% load static %}
 {% block content %}
 <h1>Добавить получателя</h1>
@@ -12,7 +12,7 @@
             Добавить
         {% endif %}
     </button>
-    <a href="{% url 'mail_service:mailing_recipient_list' %}" class="btn btn-primary">Назад</a>
+    <a href="{% url 'mailing_service:mailing_recipient_list' %}" class="btn btn-primary">Назад</a>
 
 
 </form>

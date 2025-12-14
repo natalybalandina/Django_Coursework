@@ -1,4 +1,4 @@
-{% extends 'mail_service/base.html' %}
+{% extends 'mailing_service/base.html' %}
 {% load static %}
 {% block content %}
 <h1>Информация о письме {{ message.subject }} </h1>
@@ -15,7 +15,7 @@
         <td>{{ message.body }}</td>
     </tr>
     </tbody>
-    <a href="{% url 'mail_service:message_list' %}" class="btn btn-primary mb-3">Назад</a>
+    <a href="{% url 'mailing_service:message_list' %}" class="btn btn-primary mb-3">Назад</a>
 
 </table>
 {% endblock %}

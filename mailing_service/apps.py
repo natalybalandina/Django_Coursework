@@ -4,4 +4,4 @@ from django.apps import AppConfig
 
 
 class MailingServiceConfig(AppConfig):
-    name = "mail_service"
+    name = "mailing_service"

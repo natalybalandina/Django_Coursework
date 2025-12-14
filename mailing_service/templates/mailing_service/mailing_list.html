@@ -1,10 +1,10 @@
-{% extends 'mail_service/base.html' %}
+{% extends 'mailing_service/base.html' %}
 {% load static %}
 {% block content %}
 <h2 class="text-center mb-3 mt-3">Список рассылок</h2>
 <div class="row">
     <div class="d-flex align-items-center">
-        <a href="{% url 'mail_service:mailing_create' %}" class="btn btn-primary mb-3">Добавить рассылку</a>
+        <a href="{% url 'mailing_service:mailing_create' %}" class="btn btn-primary mb-3">Добавить рассылку</a>
     </div>
 </div>
 {% if mailing_list %}
@@ -35,11 +35,11 @@
                 </td>
                 <td>
                     <div class="d-flex flex-wrap gap-1 justify-content-center">
-                        <a href="{% url 'mail_service:mailing_detail' mailing.id %}" class="btn btn-info btn-sm">Просмотр</a>
-                        <a href="{% url 'mail_service:mailing_update' mailing.id %}" class="btn btn-warning btn-sm">Редактировать</a>
-                        <a href="{% url 'mail_service:mailing_delete' mailing.id %}" class="btn btn-danger btn-sm">Удалить</a>
-                        {% if perms.mail_service.can_disable_mailing and mailing.status == 'Created' %}
-                            <a href="{% url 'mail_service:mailing_disable' mailing.id %}" class="btn btn-secondary btn-sm">Отключить</a>
+                        <a href="{% url 'mailing_service:mailing_detail' mailing.id %}" class="btn btn-info btn-sm">Просмотр</a>
+                        <a href="{% url 'mailing_service:mailing_update' mailing.id %}" class="btn btn-warning btn-sm">Редактировать</a>
+                        <a href="{% url 'mailing_service:mailing_delete' mailing.id %}" class="btn btn-danger btn-sm">Удалить</a>
+                        {% if perms.mailing_service.can_disable_mailing and mailing.status == 'Created' %}
+                            <a href="{% url 'mailing_service:mailing_disable' mailing.id %}" class="btn btn-secondary btn-sm">Отключить</a>
                         {% endif %}
                     </div>
                 </td>

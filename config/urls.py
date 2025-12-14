@@ -25,7 +25,7 @@ urlpatterns = [
     path(
         "",
         include(
-            ("mail_service.urls", "mail_service"), namespace="mail_service"
+            ("mailing_service.urls", "mailing_service"), namespace="mailing_service"
         ),
     ),
     path("", include(("users.urls", "users"), namespace="users")),

@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
         <!-- Левая часть навбара -->
-        <a class="navbar-brand" href="{% url 'mail_service:home' %}">Главная</a>
+        <a class="navbar-brand" href="{% url 'mailing_service:home' %}">Главная</a>
 
         {% if user.is_authenticated %}
-            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_recipient_list' %}">Получатели</a>
-            <a class="navbar-brand p-2" href="{% url 'mail_service:message_list' %}">Сообщения</a>
-            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_list' %}">Рассылки</a>
-            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_statistics' %}">Статистика</a>
+            <a class="navbar-brand p-2" href="{% url 'mailing_service:mailing_recipient_list' %}">Получатели</a>
+            <a class="navbar-brand p-2" href="{% url 'mailing_service:message_list' %}">Сообщения</a>
+            <a class="navbar-brand p-2" href="{% url 'mailing_service:mailing_list' %}">Рассылки</a>
+            <a class="navbar-brand p-2" href="{% url 'mailing_service:mailing_statistics' %}">Статистика</a>
         {% endif %}
 
         {% if perms.users.view_customuser and user.is_authenticated %}

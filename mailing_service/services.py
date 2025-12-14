@@ -3,7 +3,7 @@ from django.core.mail import send_mail
 from django.utils import timezone
 
 from config.settings import CACHE_ENABLED, EMAIL_HOST_USER
-from mail_service.models import Mailing, MailingAttempt
+from mailing_service.models import Mailing, MailingAttempt
 
 
 class MailingService:

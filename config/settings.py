@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "mail_service",
+    "mailing_service",
     "users",
 ]
 
@@ -136,13 +136,14 @@ LOGOUT_REDIRECT_URL = '/'
 
 os.environ["SSL_CERT_FILE"] = certifi.where()
 
-MAIL_BACKEND = os.getenv('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')  # Замените на нужный SMTP сервер
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST')  # Замените на нужный SMTP сервер  в .env
 EMAIL_PORT = int(os.getenv('EMAIL_PORT', 465))  # Порт по умолчанию 465
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False') == "True"
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', 'True') == "True"
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS') == "True"
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL') == "True"
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')  # Электронная почта пользователя
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')  # Пароль для электронной почты
+
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 SERVER_EMAIL = EMAIL_HOST_USER
 

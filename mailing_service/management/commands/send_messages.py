@@ -3,7 +3,7 @@ from django.core.management.base import BaseCommand
 from django.utils import timezone
 
 from config.settings import EMAIL_HOST_USER
-from mail_service.models import Mailing, MailingAttempt
+from mailing_service.models import Mailing, MailingAttempt
 
 
 class Command(BaseCommand):

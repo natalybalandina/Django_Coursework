@@ -1,4 +1,4 @@
-{% extends 'mail_service/base.html' %}
+{% extends 'mailing_service/base.html' %}
 {% load static %}
 {% block content %}
 <h1>Удаление сообщения {{ message.subject }}</h1>
@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <button type="submit" class="btn btn-danger mt-3">Удалить</button>
-        <a class="btn btn-primary mt-3" href="{% url 'mail_service:message_list' %}">Назад</a>
+        <a class="btn btn-primary mt-3" href="{% url 'mailing_service:message_list' %}">Назад</a>
     </div>
 </form>
     {% endblock %}
