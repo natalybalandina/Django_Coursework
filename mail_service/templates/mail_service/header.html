@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+        <!-- Левая часть навбара -->
+        <a class="navbar-brand" href="{% url 'mail_service:home' %}">Главная</a>
+
+        {% if user.is_authenticated %}
+            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_recipient_list' %}">Получатели</a>
+            <a class="navbar-brand p-2" href="{% url 'mail_service:message_list' %}">Сообщения</a>
+            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_list' %}">Рассылки</a>
+            <a class="navbar-brand p-2" href="{% url 'mail_service:mailing_statistics' %}">Статистика</a>
+        {% endif %}
+
+        {% if perms.users.view_customuser and user.is_authenticated %}
+            <a class="navbar-brand p-2" href="{% url 'users:users_list' %}">Пользователи</a>
+        {% endif %}
+
+        <!-- Правая часть навбара -->
+        <div class="ms-auto d-flex align-items-center">
+            {% if user.is_authenticated %}
+                <a class="btn btn-outline-light me-2" href="{% url 'users:profile' %}">Профиль</a>
+                <form action="{% url 'users:logout' %}" method="post" class="d-inline-block">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-outline-light">Выход</button>
+                </form>
+            {% else %}
+                <a class="btn btn-outline-light me-2" href="{% url 'users:login' %}">Вход</a>
+                <a class="btn btn-primary" href="{% url 'users:register' %}">Регистрация</a>
+            {% endif %}
+        </div>
+    </div>
+</nav>
