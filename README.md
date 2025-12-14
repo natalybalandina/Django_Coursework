@@ -68,4 +68,10 @@ python manage.py migrate
 ```
 python manage.py runserver
 ```
+# Запуск сервере
+```
+python manage.py runserver
+```
+
+
 
