@@ -1,0 +1,40 @@
+{% extends 'mailing_service/base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Ваш профиль</h2>
+
+    <div class="row">
+        <div class="col-md-4">
+            {% if user.avatar %}
+                <img src="{{ user.avatar.url }}" alt="Аватар" class="img-thumbnail">
+            {% else %}
+                <img src="https://via.placeholder.com/150" alt="Нет аватара" class="img-thumbnail">
+            {% endif %}
+        </div>
+
+        <div class="col-md-8">
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="mb-3">
+                    {{ form.avatar.label_tag }}
+                    {{ form.avatar }}
+                </div>
+                <div class="mb-3">
+                    {{ form.phone_number.label_tag }}
+                    {{ form.phone_number }}
+                </div>
+                <div class="mb-3">
+                    {{ form.country.label_tag }}
+                    {{ form.country }}
+                </div>
+                <button type="submit" class="btn btn-primary">Сохранить</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
