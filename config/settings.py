@@ -155,3 +155,10 @@ if CACHE_ENABLED:
         "LOCATION": "redis://127.0.0.1:6379/1",
         }
 }
+
+# Форматы ввода даты и времени
+DATETIME_INPUT_FORMATS = [
+    '%Y-%m-%dT%H:%M',      # HTML5 datetime-local format
+    '%Y-%m-%d %H:%M:%S',   # Стандартный формат
+    '%Y-%m-%d %H:%M',      # Формат без секунд
+]

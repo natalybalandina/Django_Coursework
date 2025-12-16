@@ -1,7 +1,9 @@
 from django import forms
 from django.forms import ModelForm
 
+
 from mailing_service.models import Mailing, MailingRecipient, Message
+
 
 
 class MessageForm(ModelForm):
@@ -16,6 +18,7 @@ class MessageForm(ModelForm):
                 attrs={"class": "form-control", "placeholder": "Введите текст письма"}
             ),
         }
+
 
 
 class MailingRecipientForm(ModelForm):
@@ -41,23 +44,26 @@ class MailingRecipientForm(ModelForm):
         }
 
 
+
 class MailingForm(ModelForm):
     class Meta:
         model = Mailing
         fields = ["start_time", "end_time", "message", "recipients"]
         widgets = {
             "start_time": forms.DateTimeInput(
+                format="%Y-%m-%dT%H:%M",
                 attrs={
                     "class": "form-control",
+                    "type": "datetime-local",
                     "placeholder": "Введите дату и время первой отправки",
-                    "input_format": "%Y-%m-%d %H:%M:%S",
                 }
             ),
             "end_time": forms.DateTimeInput(
+                format="%Y-%m-%dT%H:%M",
                 attrs={
                     "class": "form-control",
+                    "type": "datetime-local",
                     "placeholder": "Введите дату и время последней отправки",
-                    "input_format": "%Y-%m-%d %H:%M:%S",
                 }
             ),
             "message": forms.Select(

@@ -11,9 +11,11 @@ from django.http import HttpResponseForbidden
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, ListView, TemplateView, UpdateView
 
+
 from config.settings import EMAIL_HOST_USER
 from users.forms import UserProfileForm, UserRegisterForm
 from users.models import CustomUser
+
 
 
 # Create your views here.
@@ -23,13 +25,15 @@ class RegisterView(CreateView):
     template_name = "users/register.html"
     success_url = reverse_lazy("users:email_confirmation")
 
+
     def form_valid(self, form):
         user = form.save(commit=False)
         user.is_active = False  # Отключаем возможность логина
         user.generate_token()  # Генерируем токен подтверждения
         user.save()  # Теперь сохраняем в БД
 
-        group = Group.objects.get(name="Пользователи")
+
+        group, _ = Group.objects.get_or_create(name="Пользователи")
         user.groups.add(group)
         verification_url = (
             f"http://{self.request.get_host()}/users/email-confirm/{user.token}/"
@@ -41,17 +45,21 @@ class RegisterView(CreateView):
             recipient_list=[user.email],
         )
 
+
         return super().form_valid(form)
+
 
 
 class EmailConfirmationView(TemplateView):
     model = CustomUser
     template_name = "users/email_confirmation.html"
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["title"] = "Письмо активации отправлено"
         return context
+
 
 
 class ProfileView(LoginRequiredMixin, UpdateView):
@@ -60,14 +68,17 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     template_name = "users/profile.html"
     success_url = reverse_lazy("users:profile")
 
+
     def get_object(self, **kwargs):
         return self.request.user
+
 
 
 class UsersListView(LoginRequiredMixin, ListView):
     model = CustomUser
     template_name = "users/users_list.html"
     context_object_name = "object_list"  # Явно указываем имя переменной
+
 
     def dispatch(self, request, *args, **kwargs):
         # Проверяем, имеет ли пользователь право на просмотр списка клиентов
@@ -77,9 +88,11 @@ class UsersListView(LoginRequiredMixin, ListView):
             )
         return super().dispatch(request, *args, **kwargs)
 
+
     def get_queryset(self):
-        # Получаем группу "Пользователи"
-        users_group = Group.objects.get(name="Пользователи")
+        # Получаем или создаём группу "Пользователи"
+        users_group, _ = Group.objects.get_or_create(name="Пользователи")
+
 
         # Получаем всех пользователей из этой группы, кроме текущего пользователя
         queryset = CustomUser.objects.filter(groups=users_group).exclude(
@@ -88,19 +101,23 @@ class UsersListView(LoginRequiredMixin, ListView):
         return queryset
 
 
+
 class CustomPasswordResetView(PasswordResetView):
     template_name = "users/password_reset_form.html"
     email_template_name = "users/password_reset_email.html"
     success_url = reverse_lazy("users:password_reset_done")
 
 
+
 class CustomPasswordResetDoneView(PasswordResetDoneView):
     template_name = "users/password_reset_done.html"
+
 
 
 class CustomPasswordResetConfirmView(PasswordResetConfirmView):
     success_url = reverse_lazy("users:password_reset_complete")
     template_name = "users/password_reset_confirm.html"  # Указываем свой шаблон
+
 
 
 class CustomPasswordResetCompleteView(PasswordResetCompleteView):
